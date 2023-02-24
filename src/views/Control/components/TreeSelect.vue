@@ -147,7 +147,6 @@ function filterMethod(value: string) {
 
 let id = 0
 function load(node, resolve) {
-  console.log(node);
   if (node.isLeaf) return resolve([])
 
   setTimeout(() => {

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <el-tabs v-model="activeName" type="card" tabPosition="left">
+    <el-tabs v-model="activeName" tabPosition="left">
       <el-tab-pane v-for="(item, index) in tabs" :key="index" :label="item" :name="item">
         <component :is="Com[item]"></component>
       </el-tab-pane>
@@ -23,7 +23,9 @@ import Upload from './components/Upload.vue'
 import Txt from './components/Txt.vue'
 import Slot from './components/Slot.vue'
 
-const Com = {
+import { DefineComponent } from 'vue'
+
+const Com:Record<string,DefineComponent<any,any,any>> = {
   'input': Input,
   'input-number': InputNumber,
   'select': Select,
@@ -41,17 +43,6 @@ const Com = {
 const tabs = Object.keys(Com)
 
 let activeName = ref('input')
-console.log(tabs);
-let a:any = []
-tabs.forEach(i => {
-  console.log(i);
-  // a.push({
-  //   text: i,
-  //   link:`/control/${i}`
-  // })
-});
-JSON.stringify(a)
-console.log(123123);
 </script>
 <style lang="scss" scoped>
 .container {

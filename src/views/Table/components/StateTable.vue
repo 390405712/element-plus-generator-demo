@@ -53,7 +53,6 @@ const cellStyle = ({
   row: any
   rowIndex: number
 }) => {
-  console.log(rowIndex);
   if (rowIndex === 1) {
     return {
       backgroundColor: '#fdf6ec',

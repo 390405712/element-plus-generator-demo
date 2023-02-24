@@ -40,8 +40,7 @@ let formOption = ref<formOption[]>([
 
 const rules = GeneratorUtils.getRules(formOption.value)
 
-function submit(val: string) {
-  console.log(val);
+function submit() {
   console.log(formRef.value());
 }
 </script>

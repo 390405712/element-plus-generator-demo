@@ -14,7 +14,6 @@ const checkIphoneNum = (
   rule: rule,
   value: string | boolean,
 ): Promise<void> => {
-  console.log(value);
   if (!value) return Promise.reject('请输入手机号')
   if (!/(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/.test(value)) {
     return Promise.reject('手机格式有误')

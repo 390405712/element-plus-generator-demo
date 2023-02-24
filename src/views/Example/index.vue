@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts" setup name="模板化模块">
-import Page from '@/components/Generator/Page.vue'
+import Page from '@/components/Page.vue'
 import AddDialog from './components/AddDialog.vue'
 import Form from './components/Form.vue'
 import Table from './components/Table.vue'

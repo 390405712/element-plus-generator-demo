@@ -60,8 +60,6 @@ let option = $ref([])
 
 let menu = $ref(getRouter())
 
-
-console.log(menu);
 </script>
 <style lang="scss" scoped>
 .Layout {

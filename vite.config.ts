@@ -9,7 +9,6 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import VueSetupExtend from 'vite-plugin-vue-setup-extend'
 import Visualizer from 'rollup-plugin-visualizer'
 import vueJsx from '@vitejs/plugin-vue-jsx';
-// import vueJsx from "@vue/babel-plugin-jsx"
 // import styleImport from 'vite-plugin-style-import'
 // import viteCompression from 'vite-plugin-compression'
 // import importToCDN, { autoComplete } from 'vite-plugin-cdn-import'

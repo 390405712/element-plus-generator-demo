@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <el-tabs v-model="activeName" type="card" tabPosition="left">
+    <el-tabs v-model="activeName" tabPosition="left">
       <el-tab-pane v-for="(item, index) in tabs" :key="index" :label="item" :name="item">
         <template v-if="activeName === item">
           <component :is="Com[item]"></component>
@@ -29,7 +29,9 @@ import TotalTable from './components/TotalTable.vue'
 import MegerTable from './components/MegerTable.vue'
 import IndexTable from './components/IndexTable.vue'
 
-const Com = {
+import { DefineComponent } from 'vue'
+
+const Com:Record<string,DefineComponent<any,any,any>> = {
   '基础表格': TypicalTable,
   '不带斑马纹表格': NoStripeTable,
   '带边框表格': BorderTable,

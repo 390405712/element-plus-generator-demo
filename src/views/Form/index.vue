@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <el-tabs v-model="activeName" type="card" tabPosition="left">
+    <el-tabs v-model="activeName" tabPosition="left">
       <el-tab-pane v-for="(item, index) in tabs" :key="index" :label="item" :name="item">
         <component :is="Com[item]"></component>
       </el-tab-pane>
@@ -18,7 +18,9 @@ import DialogForm from './components/DialogForm.vue'
 import SearchForm from './components/SearchForm.vue'
 import CustomButtonForm from './components/CustomButtonForm.vue'
 
-const Com = {
+import { DefineComponent } from 'vue'
+
+const Com:Record<string,DefineComponent<any,any,any>> = {
   '典型表单': TypicalForm,
   '行内表单': InlineForm,
   '对齐方式与尺寸控制': PositionSizeForm,
