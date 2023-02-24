@@ -1,0 +1,33 @@
+@mixin bg-image($width: 100%, $height: 100%, $size: 100%, $position: center center, $repeat: no-repeat) {
+  width: $width;
+  height: $height;
+  background-size: $size;
+  background-position: $position;
+  background-repeat: $repeat;
+}
+@mixin flex-init($justify: center, $align: center, $direction: row, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+@mixin grow-shrink($grow: 1, $shrink: -1) {
+  flex-grow: $grow;
+  flex-shrink: $shrink;
+}
+
+// 文字溢出隐藏
+@mixin text-overflow($line: 1) {
+  /*! autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+  /* autoprefixer: on */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  line-clamp: $line;
+  word-wrap: break-word;
+  white-space: normal;
+  word-break: break-all;
+}

@@ -1,0 +1,186 @@
+// @font-face {
+//   font-family: NumberFont;
+//   src: url('./../assets/digital-7.ttf');
+// }
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+a,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  margin: 0;
+  padding: 0;
+  // font-family: MicrosoftYaHei;
+  font-family: '微软雅黑', '宋体';
+  font-size: 14px;
+  text-decoration: none;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+  width: 100%;
+  // zoom: 1;
+  //  min-width: 1300px;
+  // overflow: auto;
+  // transition: all 1s;
+}
+
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 0 !important;
+  // min-width: 1024px;
+  // min-height: 768px;
+  overflow: overlay;
+}
+
+#app {
+  height: 100%;
+  width: 100%;
+}
+
+#nprogress .bar {
+  // background-color: $blue;
+}
+
+/*---滚动条默认显示样式--*/
+::-webkit-scrollbar-thumb {
+  // @include bg-color($degrees: 25%);
+  background-color: $blue;
+  height: 5px;
+  outline-offset: -2px;
+  outline: 2px solid #fff;
+  -webkit-border-radius: 8px;
+  /*border: 2px solid #fff;*/
+}
+
+.el-scrollbar__wrap {
+  margin-bottom: 0 !important;
+  margin-right: 0 !important;
+}
+
+/*---鼠标点击滚动条显示样式--*/
+::-webkit-scrollbar-thumb:hover {
+  background-color: $blue;
+  height: auto;
+}
+
+/*---滚动条大小--*/
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/*---滚动框背景样式--*/
+::-webkit-scrollbar-track-piece {
+  background-color: transparent;
+}
+
+.Container {
+  width: 100%;
+  height: 100%;
+  @include flex-init(flex-start, flex-start, $direction: column);
+  gap: 12px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+
+  .Form,
+  .FormGenerator {
+    @include grow-shrink(0, 0);
+    width: 100%;
+
+  }
+
+  .Table {
+    width: 100%;
+    @include grow-shrink(1, 1);
+    @include flex-init(flex-start, $direction: column);
+    gap: 10px;
+
+    .tool {
+      width: 100%;
+      @include flex-init(flex-end);
+      @include grow-shrink(0, 0);
+    }
+  }
+
+  .Page {
+    @include grow-shrink(0, 0);
+    width: 100%;
+    @include flex-init(flex-end);
+  }
+}
+
+// .el-dialog.is-align-center {
+//   max-height: calc(100vh - 100px);
+//   // max-height: 100vh;
+
+//   .el-dialog__body {
+//     overflow: overlay;
+//     max-height: calc(100vh - 214px);
+//     // max-height: calc(100vh - 114px);
+
+//   }
+// }
+
+// .el-dialog {
+//   box-shadow: inset 0px -3px 0px -2px #e8ebef;
+
+//   .el-dialog__header {
+//     padding: 0 16px;
+//     margin: 0;
+//     height: 50px;
+//     box-sizing: border-box;
+//     display: flex;
+//     align-items: center;
+//     background: #F5F7FA;
+//     box-shadow: inset 0px -3px 0px -2px #e8ebef;
+//   }
+
+//   .el-dialog__headerbtn {
+//     top: 0;
+//     width: 50px;
+//     height: 50px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//   }
+// }
