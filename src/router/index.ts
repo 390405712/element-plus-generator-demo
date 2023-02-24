@@ -60,7 +60,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/Demo',
+      redirect: '/Example',
     },
     // {
     //   path: '/Login',
@@ -116,7 +116,7 @@ router.beforeEach(async (to, from, next) => {
   // if (!sessionStorage.getItem('access_token')) removeRoute(() => next('/Login'))
   if (router.options.routes.filter(i => i.component).length === whiteList.length) addRoute(() => {
     const $store = useStore()
-    // $store.querySassLoginUser()
+    // $store.queryUser()
     next({ ...to, replace: true, path: decodeURI(to.path) })
   })
   next()

@@ -7,7 +7,7 @@ let cancel: Canceler
 const promiseArr: Record<string,Canceler> = {}
 axios.defaults.baseURL = import.meta.env.VITE_APP_URL as string
 
-const whiteList = ['/file/', '/period/list','/user/list']
+const whiteList = ['/file/',]
 axios.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     const url = config.url
@@ -47,10 +47,6 @@ axios.interceptors.response.use(
 )
 
 export default (option: AxiosRequestConfig) => {
-  if (option.method === 'get') {
-    option.params = option.data
-    delete option.data
-  }
   return new Promise<any>((resolve, reject) => {
     axios({
       ...option,
