@@ -128,7 +128,22 @@ let formOption = ref<formOption[]>([
       label: '自定义内容',
     },
     control: {
-      data: staticData,
+      data: [{
+        value: '1',
+        label: 'Level one 1',
+        children: [
+          {
+            value: '1-1',
+            label: 'Level two 1-1',
+            children: [
+              {
+                value: '1-1-1',
+                label: 'Level three 1-1-1',
+              },
+            ],
+          },
+        ],
+      }],
       slot: {
         default: (scope: { data: { label: string } }) => (<>{scope.data.label}<span style="color: gray">(suffix)</span></>)
       }
