@@ -5,7 +5,8 @@
 <script lang="tsx" setup>
 import { FormGenerator, GeneratorUtils } from 'element-plus-generator'
 import type { formOption } from 'element-plus-generator/dist/type'
-import { ref } from 'vue';
+import type Node from 'element-plus/es/components/tree/src/model/node'
+import { ref } from 'vue'
 
 let form = ref({})
 const staticData = [{
@@ -124,6 +125,19 @@ let formOption = ref<formOption[]>([
     type: 'tree-select',
     formItem: {
       prop: 'key6',
+      label: '自定义内容',
+    },
+    control: {
+      data: staticData,
+      slot: {
+        default: (scope: { data: { label: string } }) => (<>{scope.data.label}<span style="color: gray">(suffix)</span></>)
+      }
+    },
+  },
+  {
+    type: 'tree-select',
+    formItem: {
+      prop: 'key7',
       label: '懒加载',
     },
     control: {
@@ -138,7 +152,6 @@ let formOption = ref<formOption[]>([
     },
   },
 ])
-
 function filterMethod(value: string) {
   let data = GeneratorUtils.getLabel(formOption.value, 'key5').control.data
   data = [...data].filter((item) => item.label.includes(value))
@@ -146,7 +159,7 @@ function filterMethod(value: string) {
 
 
 let id = 0
-function load(node, resolve) {
+function load(node: Node, resolve: typeof Promise.resolve) {
   if (node.isLeaf) return resolve([])
 
   setTimeout(() => {
@@ -164,5 +177,4 @@ function load(node, resolve) {
   }, 400)
 }
 
-// 自定义节点内容不支持 需用type:'slot'方式解决
 </script>

@@ -5,7 +5,7 @@
 <script lang="tsx" setup>
 import { FormGenerator } from 'element-plus-generator'
 import type { formOption } from 'element-plus-generator/dist/type'
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 let form = ref({
   key:'文本值'

@@ -5,7 +5,8 @@
 <script lang="tsx" setup>
 import { FormGenerator } from 'element-plus-generator'
 import type { formOption } from 'element-plus-generator/dist/type'
-import { ref } from 'vue';
+import type Node from 'element-plus/es/components/tree/src/model/node'
+import { ref } from 'vue'
 
 let form = ref({})
 
@@ -383,6 +384,22 @@ let formOption = ref<formOption[]>([
       options: options
     },
   },
+  {
+    type: 'cascader',
+    formItem: {
+      prop: 'key9',
+      label: '自定义节点内容',
+    },
+    control: {
+      options: options,
+      slot: {
+        default: (scope: { node: Node, data: { label: string, children: Record<string, string> } }) => (<>
+          <span>{scope.data.label}</span>
+          {!scope.node.isLeaf ? <span> ({scope.data.children.length}) </span> : ''}
+        </>)
+      }
+    },
+  },
 ])
-// 自定义节点内容、级联面板不支持 需用type:'slot'方式解决
+// 未封装级联面板el-cascader-panel 需用type:'slot'方式解决
 </script>

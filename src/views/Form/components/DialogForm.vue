@@ -8,7 +8,7 @@
 <script lang="tsx" setup>
 import { FormGenerator, GeneratorUtils } from 'element-plus-generator'
 import type { formOption } from 'element-plus-generator/dist/type'
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 let visible = $ref(false)
 let formRef = ref()

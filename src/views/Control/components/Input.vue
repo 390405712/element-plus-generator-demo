@@ -6,7 +6,7 @@
 import { FormGenerator } from 'element-plus-generator'
 import type { formOption } from 'element-plus-generator/dist/type'
 import { Calendar, Search } from '@element-plus/icons-vue'
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 let form = ref({})
 let formOption = ref<formOption[]>([

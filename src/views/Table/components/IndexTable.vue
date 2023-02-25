@@ -1,11 +1,11 @@
 <template>
-  <TableGenerator :data="tableData" :tableOption="tableOption" :index="indexMethod" />
+  <TableGenerator :data="tableData" :tableOption="tableOption"/>
 </template>
 
 <script lang="tsx" setup>
 import { TableGenerator } from 'element-plus-generator'
 import type { tableOption } from 'element-plus-generator/dist/type'
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 let tableOption = ref<tableOption[]>([
   {
