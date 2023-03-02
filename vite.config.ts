@@ -97,29 +97,16 @@ export default (): UserConfig => {
         }
       },
       terserOptions: {
-        //打包后移除console和注释
         compress: {
           drop_console: true,
           drop_debugger: true,
         },
       },
     },
-    esbuild: {
-      jsxInject: `import React from 'react'`
-    },
     server: {
       open: true,
       proxy: {
-        '^/period': 'http://32.1.2.7:9204',
-        '^/file': 'http://32.1.2.7:9300',
-        '^/point': 'http://32.1.2.7:9204',
-        '^/listTask': 'http://32.1.2.7:9204',
-        '^/task': 'http://32.1.2.7:9204',
-        '^/expert': 'http://32.1.2.7:9204',
-        '^/review': 'http://32.1.2.7:9204',
-        '^/domain': 'http://32.1.2.7:9201',
-        '^/user/userListByUserId': 'http://32.1.2.7:9201',
-        '^/user/list': 'http://32.1.2.7:9204',
+        '^/user': 'http://xxx:xxx',
       }
     },
   }
