@@ -1,7 +1,7 @@
 <template>
   <el-button type="primary" @click="visible = true">打开dialog</el-button>
   <el-dialog v-model="visible" title="弹窗表单" width="400px">
-      <FormGenerator type="dialog" ref="formRef" :model="form" :formOption="formOption" :rules="rules" @submit="submit"/>
+    <FormGenerator type="dialog" ref="formRef" :model="form" :formOption="formOption" :rules="rules" @submit="submit" />
   </el-dialog>
 </template>
 
@@ -10,7 +10,7 @@ import { FormGenerator, GeneratorUtils } from 'element-plus-generator'
 import type { formOption } from 'element-plus-generator/dist/type'
 import { ref } from 'vue'
 
-let visible = $ref(false)
+let visible = ref(false)
 let formRef = ref()
 let form = ref({})
 let formOption = ref<formOption[]>([

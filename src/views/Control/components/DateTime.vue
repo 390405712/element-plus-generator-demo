@@ -36,7 +36,6 @@ let formOption = ref<formOption[]>([
       type: "datetime",
     },
   },
-
   {
     type: 'datetime',
     formItem: {

@@ -6,6 +6,7 @@
 <script lang="tsx" setup>
 import { TableGenerator } from 'element-plus-generator'
 import type { tableOption } from 'element-plus-generator/dist/type'
+import { ElMessage } from 'element-plus'
 import { ref } from 'vue'
 
 let tableOption = ref<tableOption[]>([
