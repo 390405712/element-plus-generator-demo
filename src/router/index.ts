@@ -60,7 +60,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/Example',
+      redirect: '/Regexp',
     },
     // {
     //   path: '/Login',

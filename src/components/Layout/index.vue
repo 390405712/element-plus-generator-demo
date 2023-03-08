@@ -1,13 +1,13 @@
 <template><!-- style="--el-color-primary: #294cff" -->
   <div class="Layout">
-    <div class="header">
+    <div class="header" v-if="$route.path !== '/Regexp'">
       <div class="logo-container">
         <div class="logo" />
         <div class="title">项目脚手架</div>
       </div>
     </div>
     <div class="content">
-      <div class="left">
+      <div class="left" v-if="$route.path !== '/Regexp'">
         <el-menu router :default-active="$route.path" :collapse="collapse">
           <template v-for="(item, index) in menu" :key="item.path" :index="item.path">
             <el-sub-menu v-if="item.children" :index="item.path">

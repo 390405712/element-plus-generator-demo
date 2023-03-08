@@ -1,24 +1,23 @@
 <template>
   <div class="container">
     <FormGenerator label-position="top" ref="formRef" :model="form" :formOption="formOption" :rules="rules">
-      <template v-for="(item, index) in formOption" :key="index" v-slot:[item.formItem.prop]="scope">
-        <el-input v-model="form[item.formItem.prop]"></el-input>
+      <template v-for="(item, index) in formOption" :key="item.formItem.prop" #[item.formItem.prop]="scope">
+        <el-input v-model="scope.form[item.formItem.prop]" :key="item.formItem.prop"></el-input>
         <div class="examples">
-          <div class="tag-container no-wrap">
+          <div v-if="item.control?.key" class="tag-container no-wrap">
             <div>key</div>
             <el-tag @click="copy(item.control.key)">{{ item.control.key }}</el-tag>
           </div>
-          <div class="tag-container no-wrap">
+          <div v-if="item.control?.rule" class="tag-container no-wrap">
             <div>正则</div>
             <el-tag @click="copy(item.control.rule)">{{ item.control.rule }}</el-tag>
           </div>
-          <div class="tag-container">
+          <div v-if="item.control?.examples" class="tag-container">
             <div>例子</div>
             <el-tag type="success" @click="copy(i, item.formItem.prop)" v-for="(i, itemIndex) in item.control.examples"
-              :key="itemIndex">{{ i
-              }}</el-tag>
+              :key="itemIndex">{{ i }}</el-tag>
           </div>
-          <div v-if="item.control.counterExamples" class="tag-container">
+          <div v-if="item.control?.counterExamples" class="tag-container">
             <div>反例</div>
             <el-tag type="danger" @click="copy(i, item.formItem.prop)"
               v-for="(i, itemIndex) in item.control.counterExamples" :key="itemIndex">{{ i }}</el-tag>
@@ -35,6 +34,7 @@ import type { formOption, rule } from 'element-plus-generator/dist/type'
 import { ElMessage } from 'element-plus'
 import Regexps from 'element-plus-generator/dist/regexpToArr'
 import { ref } from 'vue'
+import { RegExpMobilePhoneNunber } from 'element-plus-generator/dist/regexp'
 
 let form = ref({})
 let formOption = ref<formOption[]>([])
@@ -46,7 +46,7 @@ Regexps.forEach((item, index) => {
       prop: item.key,
       label: item.title,
       rules: {
-        require:true,
+        require: true,
         trigger: 'change',
         validator: item.rule
       }
@@ -96,6 +96,7 @@ function regexpListGen() {
     display: flex;
     flex-direction: column;
     overflow: auto;
+
     .no-wrap {
       flex-wrap: nowrap !important;
       ;
