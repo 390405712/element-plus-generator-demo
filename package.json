@@ -11,7 +11,7 @@
     "@vitejs/plugin-vue-jsx": "^2.1.1",
     "axios": "^0.21.1",
     "element-plus": "^2.2.32",
-    "element-plus-generator": "^1.0.34",
+    "element-plus-generator": "^1.1.0",
     "pinia": "^2.0.2",
     "react": "^18.2.0",
     "vue": "^3.2.3",

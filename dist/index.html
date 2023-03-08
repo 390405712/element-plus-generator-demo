@@ -2,149 +2,34 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>开通数字人民币</title>
-  <style>
-    body,
-    div,
-    dl,
-    dt,
-    dd,
-    ul,
-    ol,
-    li,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    pre,
-    code,
-    form,
-    fieldset,
-    legend,
-    input,
-    textarea,
-    p,
-    a,
-    blockquote,
-    th,
-    td,
-    hr,
-    button,
-    article,
-    aside,
-    details,
-    figcaption,
-    figure,
-    footer,
-    header,
-    hgroup,
-    menu,
-    nav,
-    section {
-      margin: 0;
-      padding: 0;
-      font-family: '微软雅黑', '宋体';
-      font-size: 14px;
-      text-decoration: none;
-    }
-
-    .body-bx {
-      overflow: auto;
-      background-color: #fde0c2;
-      /*background-color: red;*/
-    }
-
-    .app-bg {
-      background: url("./images/app-bg.png") no-repeat;
-      background-size: 100% 100%;
-      width: 100%;
-      height: 100vh;
-    }
-
-    .title-bx {
-      background: url("./images/icon-title.png") no-repeat;
-      background-size: 100% 100%;
-      width: 750px;
-      height: 403px;
-      margin: 0 auto;
-    }
-
-    .icon-money {
-      background: url("./images/icon-money.png") no-repeat;
-      background-size: 100% 100%;
-      height: 334px;
-      width: 697px;
-      margin: 0 auto;
-    }
-
-    .content-bx {
-      min-height: calc(100% - 800px);
-    }
-
-    .bg-content {
-      background: url("./images/bg-content.png") no-repeat;
-      background-size: 100% 100%;
-      width: 697px;
-      min-height: calc(100vh - 760px);
-      margin: 0 auto;
-      margin-bottom: 20px;
-      box-sizing: border-box;
-      padding: 20px 0;
-    }
-
-    .bank-bx {
-      background: url("./images/icon-bank.png") no-repeat;
-      background-size: 100% 100%;
-      width: 655px;
-      height: 160px;
-      margin: 30px auto;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script type="module" crossorigin src="./assets/index.963c354a.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/@vue.2a4add27.js">
+  <link rel="modulepreload" crossorigin href="./assets/vue.ff9d403d.js">
+  <link rel="modulepreload" crossorigin href="./assets/vue-demi.cb540e78.js">
+  <link rel="modulepreload" crossorigin href="./assets/pinia.5e3d2c08.js">
+  <link rel="modulepreload" crossorigin href="./assets/dayjs.dd2ac183.js">
+  <link rel="modulepreload" crossorigin href="./assets/lodash-es.d0a8de00.js">
+  <link rel="modulepreload" crossorigin href="./assets/@vueuse.b9b23e9c.js">
+  <link rel="modulepreload" crossorigin href="./assets/@element-plus.23037ed9.js">
+  <link rel="modulepreload" crossorigin href="./assets/@ctrl.fd318bfa.js">
+  <link rel="modulepreload" crossorigin href="./assets/async-validator.6fbb5f2f.js">
+  <link rel="modulepreload" crossorigin href="./assets/@popperjs.36402333.js">
+  <link rel="modulepreload" crossorigin href="./assets/escape-html.e5dfadb9.js">
+  <link rel="modulepreload" crossorigin href="./assets/normalize-wheel-es.8aeb3683.js">
+  <link rel="modulepreload" crossorigin href="./assets/element-plus.af96f01d.js">
+  <link rel="modulepreload" crossorigin href="./assets/element-plus-generator.6ffb0482.js">
+  <link rel="modulepreload" crossorigin href="./assets/vue-router.e9feef6d.js">
+  <link rel="modulepreload" crossorigin href="./assets/nprogress.d5f5342f.js">
+  <link rel="stylesheet" href="./assets/element-plus.fa89fe39.css">
+  <link rel="stylesheet" href="./assets/nprogress.8b89e2e0.css">
+  <link rel="stylesheet" href="./assets/index.8f7c4ea0.css">
 </head>
 
-<body class="body-bx">
-  <div class="app-bg">
-    <div class="title-bx"></div>
-    <div class="icon-money"></div>
-    <div class="content-bx">
-      <div class="bg-content">
-        <div class="bank-bx"></div>
-      </div>
-    </div>
-  </div>
+<body>
+  <div id="app"></div>
+  
 </body>
 
 </html>
-
-
-<!-- <script src="./js/jquery-1.9.1.min.js"></script> -->
-<script src="https://www.jsghfw.com/filejmas/jssdk/index.js"></script>
-
-<script>
-  // $('.bank-bx').on("touchstart", function () {
-  //   window.location.href = `https://cdn.opapp.cn/icbc/collection/gowx.html`;
-  // });
-  $('.bank-bx').on("touchstart", openWxXcx);
-  //打开微信小程序
-  function openWxXcx(wx_xcx_id, url) {
-    var data = {
-      "params": {
-        "nativeModule": "wx_xcx",
-        "xcx_id": "gh_6f73411a4821",
-        "xcx_url": "pages/index/main?link=https%3A%2F%2Fdidao.lovemojito.com%2FicbcMiNi%2Fcollection%2Fchange.php%3Factname%3Djs2decp",
-        "xcx_model": "RELEASE" //TEST、PREVIEW、RELEASE
-      }
-    }
-    lightAppJssdk.openNative.openNative({
-      params: data,
-      success: function (data) {
-        // alert(JSON.stringify(data));
-      },
-      fail: function (data) { }
-    });
-  }
-</script>

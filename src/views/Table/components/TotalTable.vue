@@ -1,6 +1,5 @@
 <template>
-  <TableGenerator :data="tableData" :tableOption="tableOption" show-summary>
-  </TableGenerator>
+  <TableGenerator :data="tableData" :tableOption="tableOption" show-summary />
 </template>
 
 <script lang="tsx" setup>

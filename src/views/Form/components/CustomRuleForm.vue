@@ -5,6 +5,7 @@
 <script lang="tsx" setup>
 import { FormGenerator, GeneratorUtils } from 'element-plus-generator'
 import type { formOption, rule } from 'element-plus-generator/dist/type'
+import { RegExpMobilePhoneNunber } from 'element-plus-generator/dist/regexp'
 import { ref } from 'vue'
 
 let formRef = ref()
@@ -25,11 +26,33 @@ let formOption = ref<formOption[]>([
   {
     type: 'input',
     formItem: {
-      prop: 'phone',
+      prop: 'phone1',
       label: '手机号',
       rules: {
         trigger: 'change',
         validator: checkIphoneNum
+      }
+    },
+  },
+  {
+    type: 'input',
+    formItem: {
+      prop: 'phone2',
+      label: '手机号',
+      rules: {
+        trigger: 'change',
+        validator: RegExpMobilePhoneNunber
+      }
+    },
+  }, {
+    type: 'input',
+    formItem: {
+      prop: 'phone3',
+      label: '手机号',
+      rules: {
+        trigger: 'change',
+        message: '自定义校验提示',
+        validator: /^(?:(?:\+|00)86)?1[3-9]\d{9}$/
       }
     },
   },
