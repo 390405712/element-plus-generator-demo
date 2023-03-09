@@ -17,6 +17,7 @@ import AddOrDelForm from './components/AddOrDelForm.vue'
 import DialogForm from './components/DialogForm.vue'
 import SearchForm from './components/SearchForm.vue'
 import CustomButtonForm from './components/CustomButtonForm.vue'
+import CustomStyleFrom from './components/CustomStyleFrom.vue'
 
 import { DefineComponent } from 'vue'
 
@@ -30,6 +31,7 @@ const Com:Record<string,DefineComponent<any,any,any>> = {
   '弹窗表单': DialogForm,
   '搜索表单': SearchForm,
   '自定义按钮': CustomButtonForm,
+  '自定义表单样式': CustomStyleFrom,
 }
 
 const tabs = Object.keys(Com)
