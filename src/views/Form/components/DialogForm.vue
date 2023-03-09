@@ -1,7 +1,7 @@
 <template>
   <el-button type="primary" @click="visible = true">打开dialog</el-button>
   <el-dialog v-model="visible" title="弹窗表单" width="400px">
-    <FormGenerator type="dialog" ref="formRef" :model="form" :formOption="formOption" :rules="rules" @submit="submit" />
+    <FormGenerator type="dialog" ref="formRef" :model="form" :formOption="formOption" @submit="submit" />
   </el-dialog>
 </template>
 
@@ -42,7 +42,7 @@ let formOption = ref<formOption[]>([
   },
 ])
 
-const rules = GeneratorUtils.getRules(formOption.value)
+GeneratorUtils.setRequired(formOption.value)
 
 function submit() {
   console.log(formRef.value());

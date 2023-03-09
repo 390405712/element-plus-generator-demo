@@ -1,7 +1,6 @@
 <template>
   <el-dialog :title="type" v-model="visible" width="500px">
-    <FormGenerator type="dialog" ref="RefFormGenerator" :model="form" :formOption="formOption" :rules="rules"
-      @submit="submit" />
+    <FormGenerator type="dialog" ref="RefFormGenerator" :model="form" :formOption="formOption" @submit="submit" />
   </el-dialog>
 </template>
 
@@ -73,7 +72,7 @@ let formOption = $ref<formOption[]>([
   },
 ])
 
-const rules = GeneratorUtils.getRules(formOption)
+GeneratorUtils.setRequired(formOption)
 
 async function openDialog(id?: string) {
   type = id ? '修改' : '新增'

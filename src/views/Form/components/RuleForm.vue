@@ -1,5 +1,5 @@
 <template>
-  <FormGenerator ref="formRef" :model="form" :formOption="formOption" @submit="submit" :rules="rules" />
+  <FormGenerator ref="formRef" :model="form" :formOption="formOption" @submit="submit" />
 </template>
 
 <script lang="tsx" setup>
@@ -116,7 +116,7 @@ let formOption = ref<formOption[]>([
     },
   },
 ])
-const rules = GeneratorUtils.getRules(formOption.value, ['omitKey'])
+GeneratorUtils.setRequired(formOption.value, ['omitKey'])
 
 function submit() {
   console.log(formRef.value());

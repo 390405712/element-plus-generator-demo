@@ -1,5 +1,5 @@
 <template>
-  <FormGenerator ref="formRef" :model="form" :formOption="formOption" @submit="submit" :rules="rules" />
+  <FormGenerator ref="formRef" :model="form" :formOption="formOption" @submit="submit"/>
   <el-button @click="addItem">新增项</el-button>
   <el-button @click="formOption.pop()">删除项</el-button>
 </template>
@@ -37,7 +37,7 @@ let formOption = ref<formOption[]>([
   },
 ])
 
-let rules = GeneratorUtils.getRules(formOption.value)
+GeneratorUtils.setRequired(formOption.value)
 
 function addItem() {
   formOption.value.push({

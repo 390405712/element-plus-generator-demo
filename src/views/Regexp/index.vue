@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <FormGenerator label-position="top" ref="formRef" :model="form" :formOption="formOption" :rules="rules">
+    <FormGenerator label-position="top" ref="formRef" :model="form" :formOption="formOption" >
       <template v-for="(item, index) in formOption" :key="item.formItem.prop" #[item.formItem.prop]="scope">
         <el-input v-model="scope.form[item.formItem.prop]" :key="item.formItem.prop"></el-input>
         <div class="examples">
@@ -34,7 +34,6 @@ import type { formOption, rule } from 'element-plus-generator/dist/type'
 import { ElMessage } from 'element-plus'
 import Regexps from 'element-plus-generator/dist/regexpToArr'
 import { ref } from 'vue'
-import { RegExpMobilePhoneNunber } from 'element-plus-generator/dist/regexp'
 
 let form = ref({})
 let formOption = ref<formOption[]>([])
@@ -57,7 +56,7 @@ Regexps.forEach((item, index) => {
   })
 })
 
-const rules = GeneratorUtils.getRules(formOption.value)
+GeneratorUtils.setRequired(formOption.value)
 
 function copy(val: string, key?: string) {
   if (key) {
