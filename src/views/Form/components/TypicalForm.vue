@@ -1,8 +1,9 @@
 <template>
-  <FormGenerator ref="formRef" :model="form" :formOption="formOption" @submit="submit"/>
+  <FormGenerator ref="formRef" :model="form" :formOption="formOption" @submit="submit" />
 </template>
 
 <script lang="tsx" setup>
+// import { FormGenerator } from '@/components/lib/index'
 import { FormGenerator } from 'element-plus-generator'
 import type { formOption } from 'element-plus-generator/dist/type'
 import { ref } from 'vue'
