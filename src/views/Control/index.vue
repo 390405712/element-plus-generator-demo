@@ -20,7 +20,6 @@ import Checkbox from './components/Checkbox.vue'
 import DateTime from './components/DateTime.vue'
 import Switch from './components/Switch.vue'
 import Upload from './components/Upload.vue'
-import Txt from './components/Txt.vue'
 import Slot from './components/Slot.vue'
 
 import { DefineComponent } from 'vue'
@@ -36,7 +35,6 @@ const Com:Record<string,DefineComponent<any,any,any>> = {
   'datetime': DateTime,
   'switch': Switch,
   'upload': Upload,
-  'txt': Txt,
   'slot': Slot,
 }
 

@@ -5,6 +5,7 @@
 <script lang="ts" setup>
 import { FormGenerator } from 'element-plus-generator'
 import type { formOption } from 'element-plus-generator/dist/type'
+import type { getRefs } from './../index.vue'
 
 let form = $ref<Record<string, string>>({})
 let formOption = $ref<formOption[]>([
@@ -58,6 +59,6 @@ function submit() {
   getRefs().Table.getTableData()
 }
 
-const getRefs = inject('getRefs') as Function
+const getRefs = inject('getRefs') as getRefs
 defineExpose({ form })
 </script>

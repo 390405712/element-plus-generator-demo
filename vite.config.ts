@@ -19,7 +19,7 @@ export default (): UserConfig => {
     resolve: {
       alias: {
         '@': resolve(__dirname, './src'),
-        // 'element-plus-generator':'node_modules/element-plus-generator/lib/index'
+        'element-plus-generator':resolve(__dirname, './../element-plus-generator/')
       },
     },
     plugins: [

@@ -18,6 +18,7 @@ import DialogForm from './components/DialogForm.vue'
 import SearchForm from './components/SearchForm.vue'
 import CustomButtonForm from './components/CustomButtonForm.vue'
 import CustomStyleFrom from './components/CustomStyleFrom.vue'
+import AtypiaStyleFrom from './components/AtypiaStyleFrom.vue'
 
 import { DefineComponent } from 'vue'
 
@@ -32,6 +33,7 @@ const Com:Record<string,DefineComponent<any,any,any>> = {
   '搜索表单': SearchForm,
   '自定义按钮': CustomButtonForm,
   '自定义表单样式': CustomStyleFrom,
+  '异型表单样式': AtypiaStyleFrom,
 }
 
 const tabs = Object.keys(Com)

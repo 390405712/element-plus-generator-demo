@@ -5,7 +5,7 @@
 <script lang="tsx" setup>
 import { FormGenerator, GeneratorUtils } from 'element-plus-generator'
 import type { formOption, rule } from 'element-plus-generator/dist/type'
-import { RegExpMobilePhoneNunber } from 'element-plus-generator/dist/regexp'
+import { RegExpMobilePhoneNunber } from 'common-rules'
 import { ref } from 'vue'
 
 let formRef = ref()

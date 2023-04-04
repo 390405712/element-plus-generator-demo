@@ -43,7 +43,7 @@ export function getRouter() {
   Object.keys(views).forEach((key) => {
     const path = '/' + key.split('/').splice(2).join('/').slice(0, -10)
     if (views[key]?.name) {
-      const route = { name: views[key].name ?? path, path, component: views[key] }
+      const route = { name: views[key].name ?? path, path, component: () => views[key] }
       routes.push(route)
     }
   })

@@ -7,6 +7,7 @@
 <script lang="tsx" setup>
 import { FormGenerator, GeneratorUtils } from 'element-plus-generator'
 import type { formOption, RefFormGenerator } from 'element-plus-generator/dist/type'
+import type { getRefs } from './../index.vue'
 import $api from '@/services'
 
 let RefFormGenerator = $ref<RefFormGenerator>()
@@ -24,7 +25,6 @@ const option = [
     value: '值2'
   },
 ]
-
 let formOption = $ref<formOption[]>([
   {
     type: 'input',
@@ -72,9 +72,7 @@ let formOption = $ref<formOption[]>([
   },
 ])
 
-GeneratorUtils.setRequired(formOption)
-
-async function openDialog(id?: string) {
+async function openDialog(id?: number) {
   type = id ? '修改' : '新增'
   visible = true
   nextTick(async () => {
@@ -98,6 +96,7 @@ async function submit() {
   getRefs().Table.getTableData()
 }
 
-const getRefs = inject('getRefs') as Function
+const getRefs = inject('getRefs') as getRefs
 defineExpose({ openDialog })
+
 </script>

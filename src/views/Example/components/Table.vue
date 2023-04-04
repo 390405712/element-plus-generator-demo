@@ -14,6 +14,7 @@
 <script lang="ts" setup>
 import { TableGenerator } from 'element-plus-generator'
 import type { tableOption } from 'element-plus-generator/dist/type'
+import type { getRefs } from './../index.vue'
 import $api from '@/services'
 
 const $router = useRouter()
@@ -59,13 +60,12 @@ async function del(id:number) {
   const bool = await ElMessageBox.confirm('确定删除？')
   // bool && await $api.xxx.xxx({id})
   ElMessage.success('删除成功')
-  getRefs().Table.getList1Data()
+  getRefs().Table.getTableData()
 }
 
 onMounted(() => {
   getTableData()
 })
-
-const getRefs = inject('getRefs') as Function
+const getRefs = inject<getRefs>('getRefs')
 defineExpose({ getTableData })
 </script>
