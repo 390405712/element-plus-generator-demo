@@ -1,15 +1,16 @@
 <template>
-  <TableGenerator :data="tableData" :tableOption="tableOption" :span-method="arraySpanMethod" />
+  <TableGenerator ref="RefTableGenerator" :data="tableData" :tableOption="tableOption" :span-method="arraySpanMethod" />
   <TableGenerator :data="tableData" :tableOption="tableOption" :span-method="objectSpanMethod" />
 </template>
 
 <script lang="tsx" setup>
 import { TableGenerator } from 'element-plus-generator'
-import type { tableOption } from 'element-plus-generator/dist/type'
+import type { TableOption, RefTableGenerator } from 'element-plus-generator/dist/type'
 import { ref } from 'vue'
 import type { TableColumnCtx } from 'element-plus'
 
-let tableOption = ref<tableOption[]>([
+let RefTableGenerator = ref<RefTableGenerator>()
+let tableOption = ref<TableOption[]>([
   {
     prop: 'id',
     label: 'Id',
@@ -116,4 +117,8 @@ const objectSpanMethod = ({
     }
   }
 }
+
+onMounted(() => {
+  console.log(RefTableGenerator.value());
+})
 </script>

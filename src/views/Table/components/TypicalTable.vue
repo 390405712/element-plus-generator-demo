@@ -1,5 +1,5 @@
 <template>
-  <TableGenerator :data="tableData" :tableOption="tableOption" :loading="loading">
+  <TableGenerator ref="RefTableGenerator" :data="tableData" :tableOption="tableOption" :loading="loading">
     <template #operation="scope">
       <el-button type="primary">Primary</el-button>
     </template>
@@ -7,13 +7,13 @@
 </template>
 
 <script lang="tsx" setup>
-import { Loading } from '@element-plus/icons-vue';
 import { TableGenerator } from 'element-plus-generator'
-import type { tableOption } from 'element-plus-generator/dist/type'
+import type { TableOption, RefTableGenerator } from 'element-plus-generator/dist/type'
 import { ref } from 'vue'
 
+let RefTableGenerator = ref<RefTableGenerator>()
 let loading = ref(false)
-let tableOption = ref<tableOption[]>([
+let tableOption = ref<TableOption[]>([
   {
     prop: 'date',
     label: 'Date',
@@ -61,4 +61,8 @@ function getTableData() {
 }
 
 getTableData()
+
+onMounted(() => {
+  console.log(RefTableGenerator.value());
+})
 </script>

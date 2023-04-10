@@ -4,7 +4,7 @@
 
 <script lang="tsx" setup>
 import { FormGenerator } from 'element-plus-generator'
-import type { formOption } from 'element-plus-generator/dist/type'
+import type { FormOption } from 'element-plus-generator/dist/type'
 import { ref } from 'vue'
 
 let form = ref({})
@@ -20,7 +20,7 @@ const staticOption = [
   },
 ]
 
-let formOption = ref<formOption[]>([
+let formOption = ref<FormOption[]>([
   {
     type: 'checkbox',
     formItem: {
@@ -84,14 +84,14 @@ let formOption = ref<formOption[]>([
         {
           value: '1',
           border: true,
-          slot: {
+          slots: {
             default: () => (<span>插槽内容1</span>),
           }
         },
         {
           value: '2',
           border: true,
-          slot: {
+          slots: {
             default: () => (<span>插槽内容2</span>),
           }
         },

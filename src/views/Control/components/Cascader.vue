@@ -4,13 +4,13 @@
 
 <script lang="tsx" setup>
 import { FormGenerator } from 'element-plus-generator'
-import type { formOption } from 'element-plus-generator/dist/type'
+import type { FormOption } from 'element-plus-generator/dist/type'
 import type Node from 'element-plus/es/components/tree/src/model/node'
 import { ref } from 'vue'
 
 let form = ref({})
 
-const options = [
+const options = ref([
   {
     value: 'guide',
     label: 'Guide',
@@ -277,9 +277,9 @@ const options = [
       },
     ],
   },
-]
+])
 let id = 0
-let formOption = ref<formOption[]>([
+let formOption = ref<FormOption[]>([
   {
     type: 'cascader',
     formItem: {
@@ -392,7 +392,7 @@ let formOption = ref<formOption[]>([
     },
     control: {
       options: options,
-      slot: {
+      slots: {
         default: (scope: { node: Node, data: { label: string, children: Record<string, string> } }) => (<>
           <span>{scope.data.label}</span>
           {!scope.node.isLeaf ? <span> ({scope.data.children.length}) </span> : ''}

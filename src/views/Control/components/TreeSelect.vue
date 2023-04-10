@@ -4,9 +4,12 @@
 
 <script lang="tsx" setup>
 import { FormGenerator, GeneratorUtils } from 'element-plus-generator'
-import type { formOption } from 'element-plus-generator/dist/type'
+import type { FormOption, FormOptionItem } from 'element-plus-generator/dist/type'
 import type Node from 'element-plus/es/components/tree/src/model/node'
 import { ref } from 'vue'
+// import type {TreeData} from 'element-plus/lib/components/tree/src/tree.type.d.ts'
+
+let id = 0
 
 let form = ref({})
 const staticData = [{
@@ -25,7 +28,7 @@ const staticData = [{
     },
   ],
 }]
-let formOption = ref<formOption[]>([
+let formOption = ref<FormOption[]>([
   {
     type: 'tree-select',
     formItem: {
@@ -33,7 +36,7 @@ let formOption = ref<formOption[]>([
       label: '基础用法',
     },
     control: {
-      data: staticData
+      data: staticData,
     },
   },
   {
@@ -144,7 +147,7 @@ let formOption = ref<formOption[]>([
           },
         ],
       }],
-      slot: {
+      slots: {
         default: (scope: { data: { label: string } }) => (<>{scope.data.label}<span style="color: gray">(suffix)</span></>)
       }
     },
@@ -157,39 +160,36 @@ let formOption = ref<formOption[]>([
     },
     control: {
       lazy: true,
-      load: load,
+      load: (node, resolve) => {
+        if (node.isLeaf) return resolve([])
+        setTimeout(() => {
+          resolve([
+            {
+              value: ++id,
+              label: `lazy load node${id}`,
+            },
+            {
+              value: ++id,
+              label: `lazy load node${id}`,
+              isLeaf: true,
+            },
+          ])
+        }, 400)
+      },
       props: {
         label: 'label',
         children: 'children',
         isLeaf: 'isLeaf',
       },
-      cacheData: [{ value: 5, label: 'lazy load node5' }],
+      cacheData: [{ value: '5', label: 'lazy load node5' }],
     },
   },
 ])
 function filterMethod(value: string) {
-  let data = GeneratorUtils.getLabel(formOption.value, 'key5').control.data
+  let data = (formOption.value.find(i => i.formItem.prop === 'key5') as FormOptionItem<'tree-select'>).control.data
   data = [...data].filter((item) => item.label.includes(value))
 }
 
 
-let id = 0
-function load(node: Node, resolve: typeof Promise.resolve) {
-  if (node.isLeaf) return resolve([])
-
-  setTimeout(() => {
-    resolve([
-      {
-        value: ++id,
-        label: `lazy load node${id}`,
-      },
-      {
-        value: ++id,
-        label: `lazy load node${id}`,
-        isLeaf: true,
-      },
-    ])
-  }, 400)
-}
 
 </script>

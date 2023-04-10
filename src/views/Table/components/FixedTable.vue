@@ -1,6 +1,6 @@
 <template>
-  <TableGenerator style="width: 100%" :data="tableData" :tableOption="tableOption">
-    <template #operation="scope">
+  <TableGenerator ref="RefTableGenerator" :data="tableData" :tableOption="tableOption">
+    <template #operation="scope" width="180">
       <el-button type="primary">Primary</el-button>
     </template>
   </TableGenerator>
@@ -8,10 +8,11 @@
 
 <script lang="tsx" setup>
 import { TableGenerator } from 'element-plus-generator'
-import type { tableOption } from 'element-plus-generator/dist/type'
+import type { TableOption, RefTableGenerator } from 'element-plus-generator/dist/type'
 import { ref } from 'vue'
 
-let tableOption = ref<tableOption[]>([
+let RefTableGenerator = ref<RefTableGenerator>()
+let tableOption = ref<TableOption[]>([
   {
     prop: 'date',
     label: 'Date',
@@ -50,4 +51,8 @@ let tableData = ref<any>([
     address: 'No. 189, Grove St, Los Angeles',
   },
 ])
+
+onMounted(() => {
+  console.log(RefTableGenerator.value());
+})
 </script>

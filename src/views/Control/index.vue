@@ -2,7 +2,9 @@
   <div class="container">
     <el-tabs v-model="activeName" tabPosition="left">
       <el-tab-pane v-for="(item, index) in tabs" :key="index" :label="item" :name="item">
-        <component :is="Com[item]"></component>
+        <template v-if="activeName === item">
+          <component :is="Com[item]"></component>
+        </template>
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -24,7 +26,7 @@ import Slot from './components/Slot.vue'
 
 import { DefineComponent } from 'vue'
 
-const Com:Record<string,DefineComponent<any,any,any>> = {
+const Com: Record<string, DefineComponent<any, any, any>> = {
   'input': Input,
   'input-number': InputNumber,
   'select': Select,

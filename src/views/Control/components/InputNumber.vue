@@ -4,11 +4,11 @@
 
 <script lang="tsx" setup>
 import { FormGenerator } from 'element-plus-generator'
-import type { formOption } from 'element-plus-generator/dist/type'
+import type { FormOption } from 'element-plus-generator/dist/type'
 import { ref } from 'vue'
 
 let form = ref({})
-let formOption = ref<formOption[]>([
+let formOption = ref<FormOption[]>([
   {
     type: 'input-number',
     formItem: {

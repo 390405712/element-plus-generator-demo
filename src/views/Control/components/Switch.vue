@@ -4,13 +4,13 @@
 
 <script lang="tsx" setup>
 import { FormGenerator } from 'element-plus-generator'
-import type { formOption } from 'element-plus-generator/dist/type'
+import type { FormOption } from 'element-plus-generator/dist/type'
 import { ref } from 'vue'
 import { Check, Close } from '@element-plus/icons-vue'
 
 let form = ref({})
 let loading = ref(false)
-let formOption = ref<formOption[]>([
+let formOption = ref<FormOption[]>([
   {
     type: 'switch',
     formItem: {
@@ -96,11 +96,11 @@ let formOption = ref<formOption[]>([
 
 function beforeChange() {
   loading.value = true
-  return new Promise((resolve,reject) => {
+  return new Promise((resolve, reject) => {
     setTimeout(() => {
       loading.value = false
-      return reject()
+      return reject(true)
     }, 1000)
-  })
+  }) as Promise<boolean>
 }
 </script>

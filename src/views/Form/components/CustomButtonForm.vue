@@ -1,5 +1,5 @@
 <template>
-  <FormGenerator ref="formRef" :model="form" :formOption="formOption" @submit="submit">
+  <FormGenerator ref="RefFormGenerator" :model="form" :formOption="formOption" @submit="submit">
     <template>
       <el-button @click="onClick" type="primary" round>自定义按钮</el-button>
     </template>
@@ -8,12 +8,12 @@
 
 <script lang="tsx" setup>
 import { FormGenerator } from 'element-plus-generator'
-import type { formOption } from 'element-plus-generator/dist/type'
+import type { FormOption, RefFormGenerator } from 'element-plus-generator/dist/type'
 import { ref } from 'vue'
 
-let formRef = ref()
+let RefFormGenerator = ref<RefFormGenerator>()
 let form = ref({})
-let formOption = ref<formOption[]>([
+let formOption = ref<FormOption[]>([
   {
     type: 'input',
     formItem: {
@@ -24,9 +24,9 @@ let formOption = ref<formOption[]>([
 ])
 
 function onClick() {
-  formRef.value().submit()
+  RefFormGenerator.value().submit()
 }
 function submit() {
-  console.log(formRef.value());
+  console.log(RefFormGenerator.value());
 }
 </script>

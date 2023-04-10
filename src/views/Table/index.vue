@@ -24,14 +24,13 @@ import FormatTable from './components/FormatTable.vue'
 import SlotTable from './components/SlotTable.vue'
 import ExpandTable from './components/ExpandTable.vue'
 import TreeTable from './components/TreeTable.vue'
-import LazyTreeTable from './components/LazyTreeTable.vue'
 import TotalTable from './components/TotalTable.vue'
 import MegerTable from './components/MegerTable.vue'
 import IndexTable from './components/IndexTable.vue'
 
 import { DefineComponent } from 'vue'
 
-const Com:Record<string,DefineComponent<any,any,any>> = {
+const Com: Record<string, DefineComponent<any, any, any>> = {
   '基础表格': TypicalTable,
   '不带斑马纹表格': NoStripeTable,
   '带边框表格': BorderTable,

@@ -1,14 +1,15 @@
 <template>
-  <TableGenerator :data="tableData" :tableOption="tableOption" :showIndex="false" row-key="id" lazy :load="load"
+  <TableGenerator ref="RefTableGenerator" :data="tableData" :tableOption="tableOption" :showIndex="false" row-key="id" lazy :load="load"
     :tree-props="{ children: 'children', hasChildren: 'hasChildren' }" />
 </template>
 
 <script lang="tsx" setup>
 import { TableGenerator } from 'element-plus-generator'
-import type { tableOption } from 'element-plus-generator/dist/type'
+import type { TableOption, RefTableGenerator } from 'element-plus-generator/dist/type'
 import { ref } from 'vue'
 
-let tableOption = ref<tableOption[]>([
+let RefTableGenerator = ref<RefTableGenerator>()
+let tableOption = ref<TableOption[]>([
   {
     prop: 'date',
     label: 'Date',
@@ -88,4 +89,8 @@ function load(
     ])
   }, 1000)
 }
+
+onMounted(() => {
+  console.log(RefTableGenerator.value());
+})
 </script>

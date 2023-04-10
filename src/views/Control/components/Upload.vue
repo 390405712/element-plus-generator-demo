@@ -4,7 +4,7 @@
 
 <script lang="tsx" setup>
 import { FormGenerator } from 'element-plus-generator'
-import type { formOption } from 'element-plus-generator/dist/type'
+import type { FormOption } from 'element-plus-generator/dist/type'
 import type { UploadRequestOptions } from 'element-plus'
 import { Plus, UploadFilled } from '@element-plus/icons-vue'
 import { ref } from 'vue'
@@ -13,7 +13,7 @@ let form = ref({})
 
 let imageUrl = ref('')
 
-let formOption = ref<formOption[]>([
+let formOption = ref<FormOption[]>([
   {
     type: 'upload',
     formItem: {
@@ -23,7 +23,7 @@ let formOption = ref<formOption[]>([
     control: {
       httpRequest: submitUpload,
       accept: '.jpg, .png',
-      slot: {
+      slots: {
         tip: () => <div class="el-upload__tip">文件格式：.jpg, .png</div>,
       }
     }
@@ -38,7 +38,7 @@ let formOption = ref<formOption[]>([
       showFileList: false,
       httpRequest: submitUpload,
       accept: '.jpg, .png',
-      slot: {
+      slots: {
         default: () => <>{imageUrl.value !== '' ? <img src={imageUrl.value} class="avatar" /> : <el-icon class="avatar-uploader-icon"><Plus /></el-icon>}</>,
       }
     }
@@ -53,7 +53,7 @@ let formOption = ref<formOption[]>([
       listType: "picture-card",
       httpRequest: submitUpload,
       accept: '.jpg, .png',
-      slot: {
+      slots: {
         default: () => <el-icon class="avatar-uploader-icon"><Plus /></el-icon>,
       }
     }
@@ -80,7 +80,7 @@ let formOption = ref<formOption[]>([
       drag: true,
       httpRequest: submitUpload,
       accept: '.jpg, .png',
-      slot: {
+      slots: {
         default: () => <>
           <el-icon class="el-icon--upload"><UploadFilled /></el-icon>
           <div class="el-upload__text">

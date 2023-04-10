@@ -4,7 +4,7 @@
 
 <script lang="tsx" setup>
 import { FormGenerator, GeneratorUtils } from 'element-plus-generator'
-import type { formOption } from 'element-plus-generator/dist/type'
+import type { FormOption,FormOptionItem } from 'element-plus-generator/dist/type'
 import { ref } from 'vue'
 import { Calendar, Search } from '@element-plus/icons-vue'
 
@@ -32,7 +32,7 @@ const staticOptions = [
     label: 'Option5',
   },
 ]
-let formOption = ref<formOption[]>([
+let formOption = ref<FormOption[]>([
   {
     type: 'select',
     formItem: {
@@ -106,13 +106,13 @@ let formOption = ref<formOption[]>([
       option: [
         {
           value: 'Option1',
-          slot: {
+          slots: {
             default: () => (<span><el-icon><Calendar /></el-icon> Option1</span>),
           }
         },
         {
           value: 'Option2',
-          slot: {
+          slots: {
             default: () => (<span><el-icon><Search /></el-icon> Option2</span>),
           }
         },
@@ -141,7 +141,7 @@ let formOption = ref<formOption[]>([
       filterable: true,
       allowCreate: true,
       defaultFirstOption: true,
-      reserveKeyword: "false",
+      reserveKeyword: false,
       option: staticOptions
     },
   },
@@ -152,7 +152,7 @@ let formOption = ref<formOption[]>([
       label: '异步加载',
     },
     control: {
-      option: []
+      option: [],
     },
   },
 ])
@@ -162,7 +162,7 @@ const data = [
     id: '1',
     name: 'Option1'
   }
-]
+];
 
-GeneratorUtils.getLabel(formOption.value, 'key9').control.option = GeneratorUtils.getOption(data, 'name', 'id') // [{label:'Option1',value:'1'}]
+(formOption.value.find(i => i.formItem.prop === 'key9') as FormOptionItem<'select'>).control.option = GeneratorUtils.getOption(data, 'name', 'id') // [{label:'Option1',value:'1'}]
 </script>

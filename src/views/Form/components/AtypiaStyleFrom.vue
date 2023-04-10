@@ -1,16 +1,16 @@
 <template>
-  <FormGenerator class="CustomStyleFormGenerator" ref="formRef" inline :model="form" :formOption="formOption"
+  <FormGenerator class="AtypiaStyleFromGenerator" ref="RefFormGenerator" inline :model="form" :formOption="formOption"
     @submit="submit" />
 </template>
 
 <script lang="tsx" setup>
 import { FormGenerator } from 'element-plus-generator'
-import type { formOption } from 'element-plus-generator/dist/type'
+import type { FormOption, RefFormGenerator } from 'element-plus-generator/dist/type'
 import { ref } from 'vue'
 
-let formRef = ref()
+let RefFormGenerator = ref<RefFormGenerator>()
 let form = ref({})
-let formOption = ref<formOption[]>([
+let formOption = ref<FormOption[]>([
   {
     type: 'input',
     formItem: {
@@ -38,7 +38,7 @@ let formOption = ref<formOption[]>([
     },
   },
   {
-    type: 'datetime',
+    type: 'date-time-picker',
     formItem: {
       prop: 'date',
       label: 'Activity time',
@@ -117,30 +117,38 @@ formOption.value.forEach(i => {
   } else {
     i.formItem.style = 'width:calc(50% - 10px)'
   }
-
-
 });
+
 onMounted(() => {
+  // 1.创建容器
   const div = document.createElement('div')
   div.setAttribute('class', 'CustomDiv')
-  const el = document.querySelector('.CustomStyleFormGenerator')
+  // 2.塞入容器
+  const el = document.querySelector('.AtypiaStyleFromGenerator')
   el.insertBefore(div, el.children[0])
+  // 3.将指定的formItem装进容器
   const CustomDiv = document.querySelector('.CustomDiv')
-
-  document.querySelectorAll('.CustomStyleFormGenerator .el-form-item').forEach((i, index) => {
-    if (index <= 3) CustomDiv.appendChild(i)
-  })
+  document.querySelectorAll('.AtypiaStyleFromGenerator .el-form-item').forEach((i, index) => { index <= 3 && CustomDiv.appendChild(i) })
 })
 
 function submit() {
-  console.log(formRef.value());
+  console.log(RefFormGenerator.value());
 }
 </script>
 <style lang="scss">
-.CustomStyleFormGenerator {
+.AtypiaStyleFromGenerator {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+
+  .CustomDiv {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #b5ddfc;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
 
   .el-form-item {
     margin: 0 !important;

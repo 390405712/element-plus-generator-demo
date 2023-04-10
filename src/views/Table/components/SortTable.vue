@@ -1,13 +1,14 @@
 <template>
-  <TableGenerator :data="tableData" :tableOption="tableOption" :default-sort="{ prop: 'date', order: 'descending' }" />
+  <TableGenerator ref="RefTableGenerator" :data="tableData" :tableOption="tableOption" :default-sort="{ prop: 'date', order: 'descending' }" />
 </template>
 
 <script lang="tsx" setup>
 import { TableGenerator } from 'element-plus-generator'
-import type { tableOption } from 'element-plus-generator/dist/type'
+import type { TableOption, RefTableGenerator } from 'element-plus-generator/dist/type'
 import { ref } from 'vue'
 
-let tableOption = ref<tableOption[]>([
+let RefTableGenerator = ref<RefTableGenerator>()
+let tableOption = ref<TableOption[]>([
   {
     prop: 'date',
     label: 'Date',
@@ -45,4 +46,8 @@ let tableData = ref<any>([
     address: 'No. 189, Grove St, Los Angeles',
   },
 ])
+
+onMounted(() => {
+  console.log(RefTableGenerator.value());
+})
 </script>

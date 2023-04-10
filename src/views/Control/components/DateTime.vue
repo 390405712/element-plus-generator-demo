@@ -4,20 +4,20 @@
 
 <script lang="tsx" setup>
 import { FormGenerator } from 'element-plus-generator'
-import type { formOption } from 'element-plus-generator/dist/type'
+import type { FormOption } from 'element-plus-generator/dist/type'
 import { ref } from 'vue'
 
 let form = ref({})
-let formOption = ref<formOption[]>([
+let formOption = ref<FormOption[]>([
   {
-    type: 'datetime',
+    type: 'date-picker',
     formItem: {
       prop: 'key1',
       label: '日期',
     },
   },
   {
-    type: 'datetime',
+    type: 'date-picker',
     formItem: {
       prop: 'key2',
       label: '日期范围',
@@ -27,7 +27,7 @@ let formOption = ref<formOption[]>([
     },
   },
   {
-    type: 'datetime',
+    type: 'date-time-picker',
     formItem: {
       prop: 'key3',
       label: '日期时间',
@@ -37,30 +37,30 @@ let formOption = ref<formOption[]>([
     },
   },
   {
-    type: 'datetime',
+    type: 'date-time-picker',
     formItem: {
       prop: 'key4',
       label: '日期时间范围',
     },
     control: {
-      type: "datetimerange",
+      type: 'datetimerange',
     },
   },
   {
-    type: 'time',
+    type: 'time-picker',
     formItem: {
       prop: 'key5',
       label: '时间',
     },
   },
   {
-    type: 'time',
+    type: 'time-picker',
     formItem: {
       prop: 'key6',
       label: '时间范围',
     },
     control: {
-      'is-range': true
+      isRange: true
     },
   },
 ])

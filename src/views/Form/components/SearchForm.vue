@@ -1,15 +1,15 @@
 <template>
-  <FormGenerator type="search" ref="formRef" :model="form" :formOption="formOption" @submit="submit" />
+  <FormGenerator type="search" ref="RefFormGenerator" :model="form" :formOption="formOption" @submit="submit" />
 </template>
 
 <script lang="tsx" setup>
-import { FormGenerator, GeneratorUtils } from 'element-plus-generator'
-import type { formOption } from 'element-plus-generator/dist/type'
+import { FormGenerator } from 'element-plus-generator'
+import type { FormOption,RefFormGenerator } from 'element-plus-generator/dist/type'
 import { ref } from 'vue'
 
-let formRef = ref()
+let RefFormGenerator = ref<RefFormGenerator>()
 let form = ref({})
-let formOption = ref<formOption[]>([
+let formOption = ref<FormOption[]>([
   {
     type: 'input',
     formItem: {
@@ -44,7 +44,7 @@ let formOption = ref<formOption[]>([
     },
   },
   {
-    type: 'datetime',
+    type: 'date-time-picker',
     formItem: {
       prop: 'key4',
       label: '日期',
@@ -53,6 +53,6 @@ let formOption = ref<formOption[]>([
 ])
 
 function submit() {
-  console.log(formRef.value());
+  console.log(RefFormGenerator.value());
 }
 </script>

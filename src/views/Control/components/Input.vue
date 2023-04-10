@@ -4,12 +4,12 @@
 
 <script lang="tsx" setup>
 import { FormGenerator } from 'element-plus-generator'
-import type { formOption } from 'element-plus-generator/dist/type'
+import type { FormOption } from 'element-plus-generator/dist/type'
 import { Calendar, Search } from '@element-plus/icons-vue'
 import { ref } from 'vue'
 
 let form = ref({})
-let formOption = ref<formOption[]>([
+let formOption = ref<FormOption[]>([
   {
     type: 'input',
     formItem: {
@@ -24,7 +24,7 @@ let formOption = ref<formOption[]>([
       label: '禁用状态',
     },
     control: {
-      disabled: true
+      disabled: true,
     }
   },
   {
@@ -76,7 +76,7 @@ let formOption = ref<formOption[]>([
       label: '图标:slot',
     },
     control: {
-      slot: {
+      slots: {
         suffix: () => (<el-icon><Calendar /></el-icon>),
         prefix: () => (<el-icon><Search /></el-icon>),
       }
@@ -89,11 +89,11 @@ let formOption = ref<formOption[]>([
       label: '文本域',
     },
     control: {
-      rows: "2",
+      rows: 2,
       type: "textarea",
       autosize: { minRows: 2, maxRows: 4 },
       maxlength: "30",
-      showWordLimit: true
+      showWordLimit: true,
     }
   },
   {
@@ -103,7 +103,7 @@ let formOption = ref<formOption[]>([
       label: '复合型',
     },
     control: {
-      slot: {
+      slots: {
         prepend: () => (<el-icon><Calendar /></el-icon>),
         append: () => (<el-icon><Search /></el-icon>),
       }
@@ -116,10 +116,10 @@ let formOption = ref<formOption[]>([
       label: '监听方法',
     },
     control: {
-      onBlur: (event: FocusEvent) => { console.log('blur', event); },
-      onFocus: (event: FocusEvent) => { console.log('focus', event); },
-      onChange: (value: string | number) => { console.log('change', value); },
-      onInput: (value: string | number) => { console.log('input', value); },
+      onBlur: (event) => { console.log('blur', event); },
+      onFocus: (event) => { console.log('focus', event); },
+      onChange: (value) => { console.log('change', value); },
+      onInput: (value) => { console.log('input', value); },
       onClear: () => { console.log('clear'); },
     }
   },

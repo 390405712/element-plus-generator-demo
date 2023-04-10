@@ -1,16 +1,16 @@
 <template>
-  <FormGenerator class="CustomStyleFormGenerator" ref="formRef" inline :model="form" :formOption="formOption"
+  <FormGenerator class="CustomStyleFormGenerator" ref="RefFormGenerator" inline :model="form" :formOption="formOption"
     @submit="submit" />
 </template>
 
 <script lang="tsx" setup>
 import { FormGenerator } from 'element-plus-generator'
-import type { formOption } from 'element-plus-generator/dist/type'
+import type { FormOption,RefFormGenerator } from 'element-plus-generator/dist/type'
 import { ref } from 'vue'
 
-let formRef = ref()
+let RefFormGenerator = ref<RefFormGenerator>()
 let form = ref({})
-let formOption = ref<formOption[]>([
+let formOption = ref<FormOption[]>([
   {
     type: 'input',
     formItem: {
@@ -38,7 +38,7 @@ let formOption = ref<formOption[]>([
     },
   },
   {
-    type: 'datetime',
+    type: 'date-time-picker',
     formItem: {
       prop: 'date',
       label: 'Activity time',
@@ -121,20 +121,8 @@ formOption.value.forEach(i => {
 
 });
 
-onMounted(() => {
-  const div = document.createElement('div')
-  div.setAttribute('class', 'CustomDiv')
-  const el = document.querySelector('.CustomStyleFormGenerator')
-  el.insertBefore(div, el.children[0])
-  const CustomDiv = document.querySelector('.CustomDiv')
-
-  document.querySelectorAll('.CustomStyleFormGenerator .el-form-item').forEach((i, index) => {
-    if (index <= 3) CustomDiv.appendChild(i)
-  })
-})
-
 function submit() {
-  console.log(formRef.value());
+  console.log(RefFormGenerator.value());
 }
 </script>
 <style lang="scss">

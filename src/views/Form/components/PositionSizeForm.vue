@@ -1,19 +1,19 @@
 <template>
-  <FormGenerator :label-position="form.labelPosition" :size="form.size" ref="formRef" :model="form"
+  <FormGenerator :label-position="form.labelPosition" :size="form.size" ref="RefFormGenerator" :model="form"
     :formOption="formOption" @submit="submit" />
 </template>
 
 <script lang="tsx" setup>
 import { FormGenerator } from 'element-plus-generator'
-import type { formOption } from 'element-plus-generator/dist/type'
+import type { FormOption,RefFormGenerator } from 'element-plus-generator/dist/type'
 import { ref } from 'vue'
 
-let formRef = ref()
+let RefFormGenerator = ref<RefFormGenerator>()
 let form = ref({
   labelPosition: 'left',
   size: 'default',
 })
-let formOption = ref<formOption[]>([
+let formOption = ref<FormOption[]>([
   {
     type: 'radio-button',
     formItem: {
@@ -83,7 +83,7 @@ let formOption = ref<formOption[]>([
     },
   },
   {
-    type: 'datetime',
+    type: 'date-time-picker',
     formItem: {
       prop: 'date',
       label: 'Activity time',
@@ -157,6 +157,6 @@ let formOption = ref<formOption[]>([
 ])
 
 function submit() {
-  console.log(formRef.value());
+  console.log(RefFormGenerator.value());
 }
 </script>

@@ -1,13 +1,14 @@
 <template>
-  <TableGenerator :data="tableData" :tableOption="tableOption" show-summary />
+  <TableGenerator ref="RefTableGenerator" :data="tableData" :tableOption="tableOption" show-summary />
 </template>
 
 <script lang="tsx" setup>
 import { TableGenerator } from 'element-plus-generator'
-import type { tableOption } from 'element-plus-generator/dist/type'
+import type { TableOption, RefTableGenerator } from 'element-plus-generator/dist/type'
 import { ref } from 'vue'
 
-let tableOption = ref<tableOption[]>([
+let RefTableGenerator = ref<RefTableGenerator>()
+let tableOption = ref<TableOption[]>([
   {
     prop: 'id',
     label: 'Id',
@@ -63,4 +64,8 @@ let tableData = ref<any>([
     amount3: 15,
   },
 ])
+
+onMounted(() => {
+  console.log(RefTableGenerator.value());
+})
 </script>
