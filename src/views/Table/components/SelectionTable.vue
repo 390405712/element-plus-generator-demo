@@ -6,7 +6,7 @@
 import { TableGenerator } from 'element-plus-generator'
 import type { TableOption, RefTableGenerator } from 'element-plus-generator/dist/type'
 import { ElMessage } from 'element-plus'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 let RefTableGenerator = ref<RefTableGenerator>()
 let tableOption = ref<TableOption[]>([

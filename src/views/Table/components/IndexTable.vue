@@ -1,11 +1,11 @@
 <template>
-  <TableGenerator ref="RefTableGenerator" :data="tableData" :tableOption="tableOption"/>
+  <TableGenerator ref="RefTableGenerator" :data="tableData" :tableOption="tableOption" />
 </template>
 
 <script lang="tsx" setup>
 import { TableGenerator } from 'element-plus-generator'
 import type { TableOption, RefTableGenerator } from 'element-plus-generator/dist/type'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 let RefTableGenerator = ref<RefTableGenerator>()
 let tableOption = ref<TableOption[]>([

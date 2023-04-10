@@ -6,7 +6,7 @@
 <script lang="tsx" setup>
 import { TableGenerator } from 'element-plus-generator'
 import type { TableOption, RefTableGenerator } from 'element-plus-generator/dist/type'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import type { TableColumnCtx } from 'element-plus'
 
 let RefTableGenerator = ref<RefTableGenerator>()

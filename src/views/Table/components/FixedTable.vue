@@ -9,22 +9,22 @@
 <script lang="tsx" setup>
 import { TableGenerator } from 'element-plus-generator'
 import type { TableOption, RefTableGenerator } from 'element-plus-generator/dist/type'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 let RefTableGenerator = ref<RefTableGenerator>()
 let tableOption = ref<TableOption[]>([
   {
     prop: 'date',
     label: 'Date',
-    width:'180'
+    width: '180'
   }, {
     prop: 'name',
     label: 'Name',
-    width:'180'
+    width: '180'
   }, {
     prop: 'address',
     label: 'Address',
-    width:'100',
+    width: '100',
     fixed: 'right'
   },
 ])
