@@ -13,13 +13,13 @@
 </template>
 <script lang="ts" setup>
 import { TableGenerator } from 'element-plus-generator'
-import type { tableOption } from 'element-plus-generator/dist/type'
+import type { TableOption } from 'element-plus-generator/lib/type'
 import type { getRefs } from './../index.vue'
 import $api from '@/services'
 
 const $router = useRouter()
 let loading = $ref(false)
-let tableOption = $ref<tableOption[]>([
+let tableOption = $ref<TableOption[]>([
   {
     prop: 'key1',
     label: '文本1',

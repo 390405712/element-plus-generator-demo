@@ -5,8 +5,8 @@
 
 <script lang="tsx" setup>
 import { FormGenerator } from 'element-plus-generator'
-import type { FormOption, RefFormGenerator } from 'element-plus-generator/dist/type'
-import { ref } from 'vue'
+import type { FormOption, RefFormGenerator } from 'element-plus-generator/lib/type'
+import { ref, onMounted } from 'vue'
 
 let RefFormGenerator = ref<RefFormGenerator>()
 let form = ref({})

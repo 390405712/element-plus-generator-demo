@@ -8,7 +8,7 @@
 
 <script lang="tsx" setup>
 import { TableGenerator } from 'element-plus-generator'
-import type { TableOption, RefTableGenerator } from 'element-plus-generator/dist/type'
+import type { TableOption, RefTableGenerator } from 'element-plus-generator/lib/type'
 import { ref, onMounted } from 'vue'
 
 let RefTableGenerator = ref<RefTableGenerator>()

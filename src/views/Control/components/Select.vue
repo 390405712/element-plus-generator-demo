@@ -4,7 +4,7 @@
 
 <script lang="tsx" setup>
 import { FormGenerator, GeneratorUtils } from 'element-plus-generator'
-import type { FormOption,FormOptionItem } from 'element-plus-generator/dist/type'
+import type { FormOption,FormOptionItem } from 'element-plus-generator/lib/type'
 import { ref } from 'vue'
 import { Calendar, Search } from '@element-plus/icons-vue'
 

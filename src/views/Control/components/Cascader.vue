@@ -4,7 +4,7 @@
 
 <script lang="tsx" setup>
 import { FormGenerator } from 'element-plus-generator'
-import type { FormOption } from 'element-plus-generator/dist/type'
+import type { FormOption } from 'element-plus-generator/lib/type'
 import type Node from 'element-plus/es/components/tree/src/model/node'
 import { ref } from 'vue'
 

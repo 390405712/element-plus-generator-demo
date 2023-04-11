@@ -11,7 +11,7 @@
 
 <script lang="tsx" setup>
 import { FormGenerator } from 'element-plus-generator'
-import type { FormOption } from 'element-plus-generator/dist/type'
+import type { FormOption } from 'element-plus-generator/lib/type'
 import { ref } from 'vue'
 import { ElRate } from 'element-plus'
 

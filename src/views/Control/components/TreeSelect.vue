@@ -4,7 +4,7 @@
 
 <script lang="tsx" setup>
 import { FormGenerator, GeneratorUtils } from 'element-plus-generator'
-import type { FormOption, FormOptionItem } from 'element-plus-generator/dist/type'
+import type { FormOption, FormOptionItem } from 'element-plus-generator/lib/type'
 import type Node from 'element-plus/es/components/tree/src/model/node'
 import { ref } from 'vue'
 // import type {TreeData} from 'element-plus/lib/components/tree/src/tree.type.d.ts'

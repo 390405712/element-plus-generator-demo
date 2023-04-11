@@ -4,7 +4,7 @@
 
 <script lang="tsx" setup>
 import { FormGenerator, GeneratorUtils } from 'element-plus-generator'
-import type { FormOption, RefFormGenerator } from 'element-plus-generator/dist/type'
+import type { FormOption, RefFormGenerator } from 'element-plus-generator/lib/type'
 import type { FormItemRule } from 'element-plus'
 
 import { RegExpMobilePhoneNunber } from 'common-rules'

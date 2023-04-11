@@ -4,11 +4,11 @@
 
 <script lang="ts" setup>
 import { FormGenerator } from 'element-plus-generator'
-import type { formOption } from 'element-plus-generator/dist/type'
+import type { FormOption } from 'element-plus-generator/lib/type'
 import type { getRefs } from './../index.vue'
 
 let form = $ref<Record<string, string>>({})
-let formOption = $ref<formOption[]>([
+let formOption = $ref<FormOption[]>([
   {
     type: 'input',
     formItem: {
@@ -32,7 +32,7 @@ let formOption = $ref<formOption[]>([
     }
   },
   {
-    type: 'datetime',
+    type: 'date-time-picker',
     formItem: {
       prop: 'key3',
       label: '字段3',

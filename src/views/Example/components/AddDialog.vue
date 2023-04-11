@@ -6,7 +6,7 @@
 
 <script lang="tsx" setup>
 import { FormGenerator, GeneratorUtils } from 'element-plus-generator'
-import type { formOption, RefFormGenerator } from 'element-plus-generator/dist/type'
+import type { FormOption, RefFormGenerator } from 'element-plus-generator/lib/type'
 import type { getRefs } from './../index.vue'
 import $api from '@/services'
 
@@ -25,7 +25,7 @@ const option = [
     value: '值2'
   },
 ]
-let formOption = $ref<formOption[]>([
+let formOption = $ref<FormOption[]>([
   {
     type: 'input',
     formItem: {
