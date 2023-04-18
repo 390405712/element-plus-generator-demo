@@ -63,7 +63,7 @@ let formOption = ref<FormOption[]>([
       label: 'Activity type',
     },
     control: {
-      option: [
+      checkboxGroup: [
         {
           value: 'Online activities',
           label: 'Online activities',
@@ -88,7 +88,7 @@ let formOption = ref<FormOption[]>([
       label: 'Resources',
     },
     control: {
-      option: [
+      radioGroup: [
         {
           value: 'Sponsor',
           label: 'Sponsor',

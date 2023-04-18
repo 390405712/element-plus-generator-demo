@@ -21,7 +21,7 @@ let formOption = ref<FormOption[]>([
       label: '对齐方式',
     },
     control: {
-      option: [
+      radioGroup: [
         {
           label: 'left',
           value: 'left'
@@ -42,7 +42,7 @@ let formOption = ref<FormOption[]>([
       label: '尺寸控制',
     },
     control: {
-      option: [
+      radioGroup: [
         {
           label: 'large',
           value: 'large'
@@ -108,7 +108,7 @@ let formOption = ref<FormOption[]>([
       label: 'Activity type',
     },
     control: {
-      option: [
+      checkboxGroup: [
         {
           value: 'Online activities',
           label: 'Online activities',
@@ -133,7 +133,7 @@ let formOption = ref<FormOption[]>([
       label: 'Resources',
     },
     control: {
-      option: [
+      radioGroup: [
         {
           value: 'Sponsor',
           label: 'Sponsor',

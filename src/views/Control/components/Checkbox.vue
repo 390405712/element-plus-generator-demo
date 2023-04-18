@@ -28,7 +28,7 @@ let formOption = ref<FormOption[]>([
       label: '基础用法',
     },
     control: {
-      option: staticOption
+      checkboxGroup: staticOption
     },
   },
   {
@@ -39,7 +39,7 @@ let formOption = ref<FormOption[]>([
     },
     control: {
       disabled: true,
-      option: staticOption
+      checkboxGroup: staticOption
     },
   },
   {
@@ -49,7 +49,7 @@ let formOption = ref<FormOption[]>([
       label: '按钮样式',
     },
     control: {
-      option: staticOption
+      checkboxGroup: staticOption
     },
   },
   {
@@ -59,7 +59,7 @@ let formOption = ref<FormOption[]>([
       label: '带有边框',
     },
     control: {
-      option: [
+      checkboxGroup: [
         {
           label: '复选框选项1',
           value: '1',
@@ -80,7 +80,7 @@ let formOption = ref<FormOption[]>([
       label: '插槽内容',
     },
     control: {
-      option: [
+      checkboxGroup: [
         {
           value: '1',
           border: true,

@@ -57,7 +57,7 @@ let formOption = $ref<FormOption[]>([
       label: '文本4',
     },
     control: {
-      option
+      radioGroup:option
     }
   },
   {
@@ -67,7 +67,7 @@ let formOption = $ref<FormOption[]>([
       label: '文本5',
     },
     control: {
-      option
+      checkboxGroup:option
     }
   },
 ])

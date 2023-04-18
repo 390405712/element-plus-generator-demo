@@ -27,7 +27,7 @@ let formOption = ref<FormOption[]>([
       label: '基础用法',
     },
     control: {
-      option: staticOption
+      radioGroup: staticOption
     },
   },
   {
@@ -38,7 +38,7 @@ let formOption = ref<FormOption[]>([
     },
     control: {
       disabled: true,
-      option: staticOption
+      radioGroup: staticOption
     },
   },
   {
@@ -48,7 +48,7 @@ let formOption = ref<FormOption[]>([
       label: '按钮样式',
     },
     control: {
-      option: staticOption
+      radioGroup: staticOption
     },
   },
   {
@@ -58,7 +58,7 @@ let formOption = ref<FormOption[]>([
       label: '带有边框',
     },
     control: {
-      option: [
+      radioGroup: [
         {
           label: '单选框选项1',
           value: '1',
@@ -79,7 +79,7 @@ let formOption = ref<FormOption[]>([
       label: '插槽内容',
     },
     control: {
-      option: [
+      radioGroup: [
         {
           value: '1',
           border: true,
