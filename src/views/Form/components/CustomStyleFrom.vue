@@ -1,129 +1,127 @@
 <template>
-  <FormGenerator class="CustomStyleFormGenerator" ref="RefFormGenerator" inline :model="form" :formOption="formOption"
-    @submit="submit" />
+  <FormGenerator class="CustomStyleFormGenerator" ref="RefFormGenerator" inline v-bind="{ ...formAttrs }" />
 </template>
 
 <script lang="tsx" setup>
 import { FormGenerator } from 'element-plus-generator'
-import type { FormOption,RefFormGenerator } from 'element-plus-generator/lib/type'
+import type { FormAttrs, RefFormGenerator } from 'element-plus-generator/lib/type'
 import { ref } from 'vue'
 
-let RefFormGenerator = ref<RefFormGenerator>()
-let form = ref({})
-let formOption = ref<FormOption[]>([
-  {
-    type: 'input',
-    formItem: {
-      prop: 'name',
-      label: 'Activity name',
+const RefFormGenerator = ref<RefFormGenerator>()
+const formAttrs = ref<FormAttrs>({
+  model: {},
+  formOption: [
+    {
+      type: 'input',
+      formItem: {
+        prop: 'name',
+        label: 'Activity name',
+      },
     },
-  },
-  {
-    type: 'select',
-    formItem: {
-      prop: 'region',
-      label: 'Activity zone',
+    {
+      type: 'select',
+      formItem: {
+        prop: 'region',
+        label: 'Activity zone',
+      },
+      control: {
+        option: [
+          {
+            value: 'Option1',
+            label: 'Option1',
+          },
+          {
+            value: 'Option2',
+            label: 'Option2',
+          },
+        ]
+      },
     },
-    control: {
-      option: [
-        {
-          value: 'Option1',
-          label: 'Option1',
-        },
-        {
-          value: 'Option2',
-          label: 'Option2',
-        },
-      ]
+    {
+      type: 'date-time-picker',
+      formItem: {
+        prop: 'date',
+        label: 'Activity time',
+      },
+      control: {
+        type: "datetime"
+      },
     },
-  },
-  {
-    type: 'date-time-picker',
-    formItem: {
-      prop: 'date',
-      label: 'Activity time',
+    {
+      type: 'switch',
+      formItem: {
+        prop: 'delivery',
+        label: 'Instant delivery',
+      },
+      control: {
+      },
     },
-    control: {
-      type: "datetime"
+    {
+      type: 'checkbox',
+      formItem: {
+        prop: 'type',
+        label: 'Activity type',
+      },
+      control: {
+        checkboxGroup: [
+          {
+            value: 'Online activities',
+            label: 'Online activities',
+          }, {
+            value: 'Promotion activities',
+            label: 'Promotion activities',
+          }, {
+            value: 'Offline activities',
+            label: 'Offline activities',
+          },
+          {
+            value: 'Simple brand exposure',
+            label: 'Simple brand exposure',
+          },
+        ]
+      },
     },
-  },
-  {
-    type: 'switch',
-    formItem: {
-      prop: 'delivery',
-      label: 'Instant delivery',
+    {
+      type: 'radio',
+      formItem: {
+        prop: 'resource',
+        label: 'Resources',
+      },
+      control: {
+        radioGroup: [
+          {
+            value: 'Sponsor',
+            label: 'Sponsor',
+          }, {
+            value: 'Venue',
+            label: 'Venue',
+          },
+        ]
+      },
     },
-    control: {
+    {
+      type: 'input',
+      formItem: {
+        prop: 'form',
+        label: 'Activity form',
+      },
+      control: {
+        type: 'textarea'
+      }
     },
-  },
-  {
-    type: 'checkbox',
-    formItem: {
-      prop: 'type',
-      label: 'Activity type',
-    },
-    control: {
-      checkboxGroup: [
-        {
-          value: 'Online activities',
-          label: 'Online activities',
-        }, {
-          value: 'Promotion activities',
-          label: 'Promotion activities',
-        }, {
-          value: 'Offline activities',
-          label: 'Offline activities',
-        },
-        {
-          value: 'Simple brand exposure',
-          label: 'Simple brand exposure',
-        },
-      ]
-    },
-  },
-  {
-    type: 'radio',
-    formItem: {
-      prop: 'resource',
-      label: 'Resources',
-    },
-    control: {
-      radioGroup: [
-        {
-          value: 'Sponsor',
-          label: 'Sponsor',
-        }, {
-          value: 'Venue',
-          label: 'Venue',
-        },
-      ]
-    },
-  },
-  {
-    type: 'input',
-    formItem: {
-      prop: 'form',
-      label: 'Activity form',
-    },
-    control: {
-      type: 'textarea'
-    }
-  },
-])
+  ],
+  onSubmit: () => {
+    console.log(RefFormGenerator.value());
+  }
+})
 
-formOption.value.forEach(i => {
+formAttrs.value.formOption.forEach(i => {
   if (['form'].includes(i.formItem.prop)) {
     i.formItem.style = 'width:100%'
   } else {
     i.formItem.style = 'width:calc(50% - 10px)'
   }
-
-
 });
-
-function submit() {
-  console.log(RefFormGenerator.value());
-}
 </script>
 <style lang="scss">
 .CustomStyleFormGenerator {

@@ -1,15 +1,15 @@
 <template>
-  <FormGenerator :model="form" :formOption="formOption" />
+  <FormGenerator v-bind="{ ...formAttrs }" />
 </template>
 
 <script lang="tsx" setup>
 import { FormGenerator } from 'element-plus-generator'
-import type { FormOption } from 'element-plus-generator/lib/type'
+import type { FormAttrs } from 'element-plus-generator/lib/type'
 import type Node from 'element-plus/es/components/tree/src/model/node'
 import { ref } from 'vue'
+import type { Resolve } from 'element-plus/es/components/cascader-panel/src/node.d.ts'
 
-let form = ref({})
-
+let id = 0
 const options = ref([
   {
     value: 'guide',
@@ -278,128 +278,130 @@ const options = ref([
     ],
   },
 ])
-let id = 0
-let formOption = ref<FormOption[]>([
-  {
-    type: 'cascader',
-    formItem: {
-      prop: 'key1',
-      label: '基础用法',
-    },
-    control: {
-      options: options
-    },
-  },
-  {
-    type: 'cascader',
-    formItem: {
-      prop: 'key2',
-      label: '禁用选项',
-    },
-    control: {
-      disabled: true,
-      options: options
-    },
-  },
-  {
-    type: 'cascader',
-    formItem: {
-      prop: 'key3',
-      label: '可清空',
-    },
-    control: {
-      clearable: true,
-      options: options
-    },
-  },
-  {
-    type: 'cascader',
-    formItem: {
-      prop: 'key4',
-      label: '仅显示最后一级',
-    },
-    control: {
-      showAllLevels: false,
-      options: options
-    },
-  },
-  {
-    type: 'cascader',
-    formItem: {
-      prop: 'key5',
-      label: '多选',
-    },
-    control: {
-      props: {
-        multiple: true,
+const formAttrs = ref<FormAttrs>({
+  model: {},
+  formOption: [
+    {
+      type: 'cascader',
+      formItem: {
+        prop: 'key1',
+        label: '基础用法',
       },
-      options: options
-    },
-  },
-  {
-    type: 'cascader',
-    formItem: {
-      prop: 'key6',
-      label: '选择任意一级选项',
-    },
-    control: {
-      props: {
-        checkStrictly: true,
+      control: {
+        options: options
       },
-      options: options
     },
-  },
-  {
-    type: 'cascader',
-    formItem: {
-      prop: 'key7',
-      label: '动态加载',
+    {
+      type: 'cascader',
+      formItem: {
+        prop: 'key2',
+        label: '禁用选项',
+      },
+      control: {
+        disabled: true,
+        options: options
+      },
     },
-    control: {
-      props: {
-        lazy: true,
-        lazyLoad(node, resolve) {
-          const { level } = node
-          setTimeout(() => {
-            const nodes = Array.from({ length: level + 1 }).map((item) => ({
-              value: ++id,
-              label: `Option - ${id}`,
-              leaf: level >= 2,
-            }))
-            // Invoke `resolve` callback to return the child nodes data and indicate the loading is finished.
-            resolve(nodes)
-          }, 1000)
+    {
+      type: 'cascader',
+      formItem: {
+        prop: 'key3',
+        label: '可清空',
+      },
+      control: {
+        clearable: true,
+        options: options
+      },
+    },
+    {
+      type: 'cascader',
+      formItem: {
+        prop: 'key4',
+        label: '仅显示最后一级',
+      },
+      control: {
+        showAllLevels: false,
+        options: options
+      },
+    },
+    {
+      type: 'cascader',
+      formItem: {
+        prop: 'key5',
+        label: '多选',
+      },
+      control: {
+        props: {
+          multiple: true,
+        },
+        options: options
+      },
+    },
+    {
+      type: 'cascader',
+      formItem: {
+        prop: 'key6',
+        label: '选择任意一级选项',
+      },
+      control: {
+        props: {
+          checkStrictly: true,
+        },
+        options: options
+      },
+    },
+    {
+      type: 'cascader',
+      formItem: {
+        prop: 'key7',
+        label: '动态加载',
+      },
+      control: {
+        props: {
+          lazy: true,
+          lazyLoad(node: Node, resolve: Resolve) {
+            const { level } = node
+            setTimeout(() => {
+              const nodes = Array.from({ length: level + 1 }).map((item) => ({
+                value: ++id,
+                label: `Option - ${id}`,
+                leaf: level >= 2,
+              }))
+              // Invoke `resolve` callback to return the child nodes data and indicate the loading is finished.
+              resolve(nodes)
+            }, 1000)
+          },
         },
       },
     },
-  },
-  {
-    type: 'cascader',
-    formItem: {
-      prop: 'key8',
-      label: '可搜索',
+    {
+      type: 'cascader',
+      formItem: {
+        prop: 'key8',
+        label: '可搜索',
+      },
+      control: {
+        filterable: true,
+        options: options
+      },
     },
-    control: {
-      filterable: true,
-      options: options
+    {
+      type: 'cascader',
+      formItem: {
+        prop: 'key9',
+        label: '自定义节点内容',
+      },
+      control: {
+        options: options,
+        slots: {
+          default: (scope: { node: Node, data: { label: string, children: Record<string, string> } }) => (<>
+            <span>{scope.data.label}</span>
+            {!scope.node.isLeaf ? <span> ({scope.data.children.length}) </span> : ''}
+          </>)
+        }
+      },
     },
-  },
-  {
-    type: 'cascader',
-    formItem: {
-      prop: 'key9',
-      label: '自定义节点内容',
-    },
-    control: {
-      options: options,
-      slots: {
-        default: (scope: { node: Node, data: { label: string, children: Record<string, string> } }) => (<>
-          <span>{scope.data.label}</span>
-          {!scope.node.isLeaf ? <span> ({scope.data.children.length}) </span> : ''}
-        </>)
-      }
-    },
-  },
-])
+  ]
+})
 // 未封装级联面板el-cascader-panel 需用type:'slot'方式解决
 </script>

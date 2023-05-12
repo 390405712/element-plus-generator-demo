@@ -1,18 +1,16 @@
 <template>
-  <FormGenerator ref="RefFormGenerator" :model="form" :formOption="formOption" @submit="submit" />
+  <FormGenerator ref="RefFormGenerator" v-bind="{ ...formAttrs }" />
   <el-button @click="addItem">新增项</el-button>
-  <el-button @click="formOption.pop()">删除项</el-button>
+  <el-button @click="formAttrs.formOption.pop()">删除项</el-button>
 </template>
 
 <script lang="tsx" setup>
 import { FormGenerator, GeneratorUtils } from 'element-plus-generator'
-import type { FormOption, RefFormGenerator } from 'element-plus-generator/lib/type'
+import type { FormAttrs, RefFormGenerator } from 'element-plus-generator/lib/type'
 import type { FormItemRule } from 'element-plus'
 
 import { ref } from 'vue'
 
-let RefFormGenerator = ref<RefFormGenerator>()
-let form = ref({})
 
 const checkIphoneNum: FormItemRule['validator'] = (rule, value, callback) => {
   if (!value) return callback(new Error('请输入手机号'))
@@ -21,29 +19,35 @@ const checkIphoneNum: FormItemRule['validator'] = (rule, value, callback) => {
   }
   return callback()
 }
-
-let formOption = ref<FormOption[]>([
-  {
-    type: 'input',
-    formItem: {
-      prop: 'phone',
-      label: '手机号',
-      rules: {
-        trigger: 'change',
-        validator: checkIphoneNum
-      }
+const RefFormGenerator = ref<RefFormGenerator>()
+const formAttrs = ref<FormAttrs>({
+  model: {},
+  formOption: [
+    {
+      type: 'input',
+      formItem: {
+        prop: 'phone',
+        label: '手机号',
+        rules: {
+          trigger: 'change',
+          validator: checkIphoneNum
+        }
+      },
     },
-  },
-])
+  ],
+  onSubmit: () => {
+    console.log(RefFormGenerator.value());
+  }
+})
 
-GeneratorUtils.setRequired(formOption.value)
+GeneratorUtils.setRequired(formAttrs.value.formOption)
 
 function addItem() {
-  formOption.value.push({
+  formAttrs.value.formOption.push({
     type: 'input',
     formItem: {
-      prop: `phone${formOption.value.length}`,
-      label: `手机号${formOption.value.length}`,
+      prop: `phone${formAttrs.value.formOption.length}`,
+      label: `手机号${formAttrs.value.formOption.length}`,
       rules: {
         required: true,
         trigger: 'change',
@@ -53,8 +57,4 @@ function addItem() {
   },)
 }
 
-
-function submit() {
-  console.log(RefFormGenerator.value());
-}
 </script>

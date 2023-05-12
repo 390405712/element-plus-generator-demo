@@ -91,6 +91,8 @@ export default (): UserConfig => {
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
+              // return 'lib'
+              console.log(id.toString());
               return id.toString().split('node_modules/')[1].split('/')[0].toString()
             }
           }

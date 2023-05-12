@@ -1,116 +1,141 @@
 <template>
-  <FormGenerator ref="RefFormGenerator" :model="form" :formOption="formOption" @submit="submit" />
+  <FormGenerator ref="RefFormGenerator" v-bind="{ ...formAttrs }" />
 </template>
 
 <script lang="tsx" setup>
 import { FormGenerator } from 'element-plus-generator'
-import type { FormOption,RefFormGenerator } from 'element-plus-generator/lib/type'
+import type { FormAttrs, RefFormGenerator } from 'element-plus-generator/lib/type'
 import { ref } from 'vue'
 
-let RefFormGenerator = ref<RefFormGenerator>()
-let form = ref({})
-let formOption = ref<FormOption[]>([
-  {
-    type: 'input',
-    formItem: {
-      prop: 'name',
-      label: 'Activity name',
+const RefFormGenerator = ref<RefFormGenerator>()
+const formAttrs = ref<FormAttrs>({
+  model: {},
+  formOption: [
+    {
+      type: 'input',
+      formItem: {
+        prop: 'name',
+        label: 'Activity name',
+      },
+      control: {
+        'onUpdate:modelValue': (val) => {
+          console.log(val);
+        }
+      }
     },
-  },
-  {
-    type: 'select',
-    formItem: {
-      prop: 'region',
-      label: 'Activity zone',
+    {
+      type: 'select',
+      formItem: {
+        prop: 'region',
+        label: 'Activity zone',
+      },
+      control: {
+        option: [
+          {
+            value: 'Option1',
+            label: 'Option1',
+          },
+          {
+            value: 'Option2',
+            label: 'Option2',
+          },
+        ],
+        'onUpdate:modelValue': (val) => {
+          console.log(val);
+        }
+      },
     },
-    control: {
-      option: [
-        {
-          value: 'Option1',
-          label: 'Option1',
-        },
-        {
-          value: 'Option2',
-          label: 'Option2',
-        },
-      ]
+    {
+      type: 'date-time-picker',
+      formItem: {
+        prop: 'date',
+        label: 'Activity time',
+      },
+      control: {
+        type: "datetime",
+        'onUpdate:modelValue': (val) => {
+          console.log(val);
+        }
+      },
     },
-  },
-  {
-    type: 'date-time-picker',
-    formItem: {
-      prop: 'date',
-      label: 'Activity time',
+    {
+      type: 'switch',
+      formItem: {
+        prop: 'delivery',
+        label: 'Instant delivery',
+      },
+      control: {
+        'onUpdate:modelValue': (val) => {
+          console.log(val);
+        }
+      },
     },
-    control: {
-      type: "datetime"
+    {
+      type: 'checkbox',
+      formItem: {
+        prop: 'type',
+        label: 'Activity type',
+      },
+      control: {
+        checkboxGroup: [
+          {
+            value: 'Online activities',
+            label: 'Online activities',
+          }, {
+            value: 'Promotion activities',
+            label: 'Promotion activities',
+          }, {
+            value: 'Offline activities',
+            label: 'Offline activities',
+          },
+          {
+            value: 'Simple brand exposure',
+            label: 'Simple brand exposure',
+          },
+        ],
+        'onUpdate:modelValue': (val) => {
+          console.log(val);
+        }
+      },
     },
-  },
-  {
-    type: 'switch',
-    formItem: {
-      prop: 'delivery',
-      label: 'Instant delivery',
+    {
+      type: 'radio',
+      formItem: {
+        prop: 'resource',
+        label: 'Resources',
+      },
+      control: {
+        radioGroup: [
+          {
+            value: 'Sponsor',
+            label: 'Sponsor',
+          }, {
+            value: 'Venue',
+            label: 'Venue',
+          },
+        ],
+        'onUpdate:modelValue': (val) => {
+          console.log(val);
+        }
+      },
     },
-    control: {
+    {
+      type: 'input',
+      formItem: {
+        prop: 'form',
+        label: 'Activity form',
+      },
+      control: {
+        type: 'textarea',
+        'onUpdate:modelValue': (val) => {
+          console.log(val);
+        }
+      }
     },
-  },
-  {
-    type: 'checkbox',
-    formItem: {
-      prop: 'type',
-      label: 'Activity type',
-    },
-    control: {
-      checkboxGroup: [
-        {
-          value: 'Online activities',
-          label: 'Online activities',
-        }, {
-          value: 'Promotion activities',
-          label: 'Promotion activities',
-        }, {
-          value: 'Offline activities',
-          label: 'Offline activities',
-        },
-        {
-          value: 'Simple brand exposure',
-          label: 'Simple brand exposure',
-        },
-      ]
-    },
-  },
-  {
-    type: 'radio',
-    formItem: {
-      prop: 'resource',
-      label: 'Resources',
-    },
-    control: {
-      radioGroup: [
-        {
-          value: 'Sponsor',
-          label: 'Sponsor',
-        }, {
-          value: 'Venue',
-          label: 'Venue',
-        },
-      ]
-    },
-  },
-  {
-    type: 'input',
-    formItem: {
-      prop: 'form',
-      label: 'Activity form',
-    },
-    control: {
-      type: 'textarea'
-    }
-  },
-])
+  ],
+  onSubmit: () => {
+    console.log(RefFormGenerator.value());
+  }
+})
 
-function submit() {
-  console.log(RefFormGenerator.value());
-}
 </script>

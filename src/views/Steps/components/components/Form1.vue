@@ -3,8 +3,8 @@
 </template>
 
 <script lang="tsx" setup>
-import { FormGenerator, GeneratorUtils } from 'element-plus-generator'
-import type { FormAttrs, RefFormGenerator } from 'element-plus-generator/lib/type'
+import { FormGenerator } from 'element-plus-generator'
+import type { RefFormGenerator, FormAttrs } from 'element-plus-generator/lib/type'
 import { ref } from 'vue'
 
 const RefFormGenerator = ref<RefFormGenerator>()
@@ -109,18 +109,10 @@ const formAttrs = ref<FormAttrs>({
         type: 'textarea'
       }
     },
-    {
-      type: 'input',
-      formItem: {
-        prop: 'omitKey',
-        label: '非必填字段',
-      },
-    },
   ],
-  onSubmit: () => {
-    console.log(RefFormGenerator.value());
-  }
+  onSubmit: () => { console.log(RefFormGenerator.value()); },
+  noFooter: true
 })
 
-GeneratorUtils.setRequired(formAttrs.value.formOption, ['omitKey'])
+defineExpose({ RefFormGenerator, formAttrs })
 </script>
